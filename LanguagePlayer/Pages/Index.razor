@@ -1,0 +1,56 @@
+﻿@page "/"
+
+<form id="Sentences">
+    <div class="inputrow">
+        <label id="Page">P</label>
+        <InputText id="page" style="height:30px;width:40px" @bind-Value="txtPage" size="2" />
+      
+        <select class="custom-select" @onchange="PageValueChangeHandler" title="Pages">
+            <option value="Select">@selectForeignWord</option>
+            @foreach (var page in pages)
+            {
+                <option value="@(page)"> @(page)</option>
+            }  
+        </select>
+
+        <label id="Sentence">Sen</label>
+        <InputText id="SentenceNum" style="height:30px;width:40px" @bind-Value="txtSentence" size="2" />
+        <InputText id="SentencesCount" style="height:30px;width:40px" @bind-Value="txtSentencesCount" size="2" />
+        
+        <select class="custom-select" @onchange="BookValueChangeHandler" title="Books">
+            <option value="Select">@selectBook</option>
+            @foreach (var book in books)
+            {
+                <option value="@(book)"> @(book)</option>
+            }
+        </select>
+    </div>
+</form>
+
+<div class="row">
+    <InputTextArea id="Slovak" class="form-control" @bind-Value="txtSlovak" rows="4" />
+
+    <div></div>
+    <br>
+    <div>
+        <input style="float: right;height:40px;width:40px" type="checkbox" id="hideForeign" name="hideForeign" @oninput="CheckboxChanged" />
+    </div>
+    <br>
+    <div></div>
+    <br>
+    @if (disabled)
+    {
+        <InputTextArea id="Foreign" class="form-control" @bind-Value="txtForeign" rows="4" />
+        <div class="inputrow">
+            <InputTextArea id="ForeignWord" class="form-control" @bind-Value="txtForeignWord" rows="2" />
+        </div>
+    }
+</div>
+
+
+<div id="buttons">
+    <button style="float: left;height:50px;width:85px" type="submit" class="btn btn-success" @onclick="() => btnPrevious_Click()">Previous</button>
+    <button type="submit" style="height:75px;width:100px" class="btn btn-success" @onclick="() => btnPlayStop_Click()">Play/Stop</button>
+    <button style="float: right;height:100px;width:130px" type="submit" class="btn btn-success" @onclick="() => btnNext_Click()">Next</button>
+</div> 
+
