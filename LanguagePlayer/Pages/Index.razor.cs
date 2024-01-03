@@ -24,7 +24,7 @@ public partial class Index
 
     private List<string> books = new()
     {
-        "5000", "7500", "10000"
+        "5000", "7500", "8500", "10000"
     };
 
     private string txtSlovak;
@@ -121,7 +121,7 @@ public partial class Index
                 pages.Add(i.ToString());
             }
         }
-        else if (book == 7500 || book == 10000)
+        else if (book == 7500 || book == 8500 || book == 10000)
         {
             foreach (var splitPage in splitPages)
             {
